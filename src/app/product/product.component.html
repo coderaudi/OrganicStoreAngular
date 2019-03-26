@@ -1,0 +1,95 @@
+
+<nav class="navbar navbar-light bg-light">
+
+    <div class="row">
+    <a class="navbar-brand">Organic store</a>
+    <div>
+      <button class="btn btn-outline-success my-2 my-sm-0"><span>{{productItemCount}}</span></button>
+    </div>
+      
+    <div *ngIf="localStorageUser == 'User'">
+        <h3> {{localStorageUser}} </h3>
+        <button routerLink="/login" >Login </button>
+    </div>
+
+    <div *ngIf="localStorageUser != 'User'">
+          <h3> {{localStorageUser}} </h3>
+          <button routerLink="/admin" >Product Management</button>
+          <button (click)="logOut()"> Logout</button>
+    </div>
+   
+    
+    <button  *ngIf="localStorageUser =='Admin'" class="btn btn-outline-success my-2 my-sm-0"  routerLink="login" >Admin </button>
+    </div>
+  
+  </nav>
+  
+<!-- {{productList}} -->
+
+
+<div class="container">
+  
+<div class="jumbotron">
+
+</div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-3" >
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-primary" (click)="onAll()">All Catergories</button>
+                <button type="button" class="btn btn-primary"  (click)="onFrt()" >Fruits</button>
+                <button type="button" class="btn btn-primary"  (click)="onVeg()" >Vegetables</button>
+              </div>
+        </div>
+        <div class="col-sm-8" >
+            <div class="row">
+                <div  class="card" style="width:250px"  
+
+                    *ngFor="let product of productDisp" >
+                    <div>
+                        <img class="card-img-top" src="{{product.imageUrl}}" alt="{{product.title}}"  width="100px" height="150px" >
+                        <div class="card-body">
+                          <h3 class="card-title">{{product.title}}</h3>
+                            <p class="card-text"> $ {{product.price}}</p>
+                          <a  class="btn btn-primary" *ngIf="!productcountary[product.id] > 0" (click)="addtoCart(product.id)">ADD TO CART</a>
+                          
+                          <div class="btn-group" *ngIf="productcountary[product.id] > 0">
+                              <button type="button" class="btn btn-primary" (click)="onDEC(product.id)"  >-</button>
+                              <button type="button" class="btn btn-primary">{{productcountary[product.id]}}</button>
+                              <button type="button" class="btn btn-primary" (click)="onINC(product.id)"  >+</button>
+                            </div>
+                    </div>
+               
+                </div>
+              </div>
+              </div>
+        </div>
+      </div>
+</div>
+
+
+
+<hr>
+
+
+
+<!-- 
+
+<table>
+  <tr *ngFor="let product of productList" >
+    <td>{{product.id}}</td><td>{{product.title}}</td>
+    <td>{{product.category}}</td><td>{{product.price}}</td>
+    <td> <img src="{{product.imageUrl}}" alt="{{product.title}}" width="100px" height="70px"> </td>
+  </tr>
+</table> -->
+
+<!-- 
+<hr> testing only
+
+<button (click)="onProductAdd()">Add List Product</button> -->
+
+ <!-- <button  (click)="onDelete(product)"
+      class="btn btn-info btn-danger" >Delete</button> -->

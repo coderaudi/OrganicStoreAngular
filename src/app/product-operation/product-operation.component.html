@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="jumbotron">
+
+    <div class="col-sm-6">
+    
+      <form   >
+        <div class="form-group">
+          <label for="title">Title : </label>
+          <input 
+          [(ngModel)]="title"
+          required 
+          [ngModelOptions]="{standalone: true}"
+          class="form-control" > 
+        </div>
+        <div class="form-group">
+          <label for="price">Price : </label>
+          <input  [(ngModel)]="price" required  class="form-control" [ngModelOptions]="{standalone: true}" >  
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">Img Url: </label>
+            <input  type="text"  [(ngModel)]="imageUrl"  required  class="form-control" [ngModelOptions]="{standalone: true}" >  
+        </div>
+        <div class="form-group">
+          <label for="category">Product category: </label>
+            <select  [(ngModel)]="category"  required  class="form-control"  [ngModelOptions]="{standalone: true}">
+              <option *ngFor = "let category of productTypeList" value={{category}}>{{category}}</option>
+             </select>
+        </div>
+      
+        <button class = "btn btn-primary" (click) = "addItem()">Add New</button>
+        <button class = "btn btn-primary" *ngIf = "btnTitle == 'UPDATE'" (click) = "updateItem()">{{ btnTitle }}</button>
+      </form>
+    </div>
+
+  </div>
+</div>

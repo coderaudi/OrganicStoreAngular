@@ -1,0 +1,19 @@
+<div class="container">
+
+   
+<div class="col-sm-6">
+    <form class="form-signin">
+      <h2 class="form-signin-heading">Please sign in</h2>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="text" class="form-control" placeholder="Username" [(ngModel)]="userName" [ngModelOptions]="{standalone: true}">
+  
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" class="form-control"  placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+
+      <button (click) = "onLogin()" class="btn btn-info">Login</button>
+    </form>
+  </div>
+
+</div>
+
+ 
